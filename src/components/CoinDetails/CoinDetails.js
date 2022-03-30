@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 
 const CoinDetails = () => {
     const { id } = useParams();
     const [coinDetails, setCoinDetails] = useState({});
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
+        setLoading(true);
         fetch(`https://api.coingecko.com/api/v3/coins/${id}`)
-        .then(res => res.json()).then(data => setCoinDetails(data))
+        .then(res => res.json()).then(data => {
+            setCoinDetails(data)
+            setLoading(false);
+        })
+
     }, [id])
     // console.log(coinDetails)
     return (
-        <div className='container mx-auto my-32'>
+        <>
+            {
+                loading ? <Spinner></Spinner> : 
+                <div className='container mx-auto my-32'>
             <div className="grid grid-cols-1 h-full md:grid-cols-2 justify-items-center gap-4 items-center">
                 <div className='order-2 md:order-1'>
                     <h2 className='text-3xl font-semibold text-gray-600'>General Info:</h2>
@@ -37,6 +47,8 @@ const CoinDetails = () => {
                 </div>
             </div>
         </div>
+            }
+        </>
     );
 };
 
