@@ -10,9 +10,9 @@ const CoinDetails = () => {
     }, [id])
     // console.log(coinDetails)
     return (
-        <div className='container mx-auto py-8 h-[90vh]'>
+        <div className='container mx-auto my-32'>
             <div className="grid grid-cols-1 h-full md:grid-cols-2 justify-items-center gap-4 items-center">
-                <div className=''>
+                <div className='order-2 md:order-1'>
                     <h2 className='text-3xl font-semibold text-gray-600'>General Info:</h2>
                     <hr />
                     <h2 className='mt-4'>Coin Name: {coinDetails.name}</h2>
@@ -32,7 +32,7 @@ const CoinDetails = () => {
                     <h2>Liquidity Score: {coinDetails.liquidity_score ? coinDetails.liquidity_score:'Not Found'}</h2>
                     <h2>Public Interest Score:  {coinDetails.public_interest_score}</h2>
                 </div>
-                <div className='justify-items-center'>
+                <div className='order-1 md:order-2 justify-items-center'>
                     <img src={coinDetails.image?.large} alt="img" />
                 </div>
             </div>

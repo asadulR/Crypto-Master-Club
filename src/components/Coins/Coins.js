@@ -3,10 +3,14 @@ import CoinCard from '../CoinCard/CoinCard';
 
 const Coins = () => {
     const [coins, setCoins] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
+        setLoading(true);
         fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=60&page=1&sparkline=false')
             .then(res => res.json())
             .then(data => setCoins(data));
+            setLoading(false);
     }, [])
 
     // console.log(coins)
