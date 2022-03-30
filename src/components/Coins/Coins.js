@@ -9,7 +9,7 @@ const Coins = () => {
             .then(data => setCoins(data));
     }, [])
 
-    console.log(coins)
+    // console.log(coins)
     return (
         <div>
             <p className='text-center pt-7 text-2xl text-gray-600 font-semibold font-serif'>Available Crypto Currencies</p>
